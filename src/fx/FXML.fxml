@@ -7,8 +7,31 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" id="VBox" prefHeight="800.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FXMLController">
-    <stylesheets>
+<VBox alignment="CENTER" spacing="15" id="VBox" prefHeight="500.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FXMLController">
+<!--    <stylesheets>
         <URL value="@fxml.css" />
-    </stylesheets>    
+    </stylesheets>    -->
+    <children>
+        <Label id="welcome" text="Welcome to the NHL Stat System" />
+        
+        <HBox>
+            
+<!--                <ImageView fitHeight="24" fitWidth="24" 
+                    pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@javafx_images_nhl.jpg" />
+                    </image>
+                </ImageView>
+            -->
+            <Label id="description" />
+        </HBox>
+        <Label id="loginInstructions" text="Please login to be able to change the schedule"> 
+<!--            <font>
+                <Font size="20">
+            </font>-->
+        </Label>
+            <TextField id="txtLogin" maxWidth ="150" text="username"/>
+            <PasswordField id="txtLogin" text="password" maxWidth ="150" />
+        <Button id="btnSubmit" text="Submit" mnemonicParsing = "true" /> <!-- e -> window.setScene(scene2));//switch to scene2 where we can display the scores -->
+    </children>
 </VBox>
