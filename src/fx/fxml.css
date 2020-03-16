@@ -3,5 +3,29 @@
  */
 
 .mainFxmlClass {
-
+    .root {
+       
+    }
+    .label {
+        -fx-max-width: 300;
+        -fx-text-alignment: center;
+        -fx-font-family: sans-serif;  
+        -fx-font-size: 12pt;
+        -fx-wrap-text: true;
+    }
+    .button {
+        -fx-max-width: 200;
+        -fx-background-radius: 15;
+        -fx-background-color: #58366C;
+        -fx-text-fill: #FFFFFF;
+        -fx-font-weight: bold;
+    }
+    #description {
+        -fx-border-color: black;
+        -fx-border-radius: 12;
+        -fx-border-width: 1;
+        -fx-margin-left: 10;
+        -fx-margin-right: 10;
+    }
+    
 }
