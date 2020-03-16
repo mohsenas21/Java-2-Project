@@ -51,7 +51,7 @@ public class main extends Application {
         loginBtn.setOnAction(e -> window.setScene(scene2));//switch to scene2 where we can display the scores
 
         //HBox for logo and description
-        HBox logoDesc = new HBox();
+        HBox logoDesc = new HBox(25);
         ImageView logo = new ImageView(new Image("images/nhl.png"));
         logo.setFitHeight(100);
         logo.setFitWidth(80);
