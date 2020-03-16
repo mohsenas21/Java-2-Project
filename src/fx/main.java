@@ -3,9 +3,15 @@ package fx;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,33 +37,43 @@ public class main extends Application {
 
         window = primaryStage;
 
-        Label label1 = new Label("Welcome to the NHL Stat System");
+        Label welcome = new Label("Welcome to the NHL Stat System");
 
         //First button
-        Button btn1 = new Button();
-        btn1.setText("Scores");
-        btn1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                //switch to scene2 where we can display the scores
-                window.setScene(scene2);
-            }
-        });
+        Button loginBtn = new Button();
+        loginBtn.setText("Submit");
+        loginBtn.setOnAction(e -> window.setScene(scene2));//switch to scene2 where we can display the scores
 
+        //HBox for logo and description
+        HBox logoDesc = new HBox();
+        ImageView logo = new ImageView(new Image("images/nhl.jpg"));
+        logo.setFitHeight(100);
+        logo.setFitWidth(100);
+        logoDesc.setAlignment(Pos.CENTER);
+        Label description = new Label("Our app does blah blah _____");
+        logoDesc.getChildren().addAll(logo, description);
+        
+        //instruction label
+        Label login = new Label("Please login to be able to change the schedule!");
+        
+        //username text field
+        TextField userName = new TextField("username");
+        userName.setMaxWidth(200);
+        
+        //password text field
+        PasswordField password = new PasswordField();
+        password.setMaxWidth(200);
+        
         // VBox is used for the spaces between our bottuns (so like a header I guess)
-        VBox layout1 = new VBox(25);
-        layout1.getChildren().addAll(label1, btn1);
+        VBox layout1 = new VBox(15);
+        layout1.setAlignment(Pos.CENTER);
+        layout1.getChildren().addAll(welcome, logoDesc,login, userName, password, loginBtn);
         scene1 = new Scene(layout1, 600, 300);
 
         //Second button
         Button btn2 = new Button();
         btn2.setText("Back to the main page");
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                window.setScene(scene1);
-            }
-        });
+        btn2.setOnAction(e -> window.setScene(scene1));
 
         // Stackpane puts the button in the center
         StackPane layout2 = new StackPane();

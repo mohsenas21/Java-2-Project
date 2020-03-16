@@ -7,8 +7,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FXMLController">
+<VBox alignment="CENTER" id="VBox" prefHeight="800.0" prefWidth="1000.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FXMLController">
     <stylesheets>
-        <URL value="@fxml.css"/>
-    </stylesheets>
-</AnchorPane>
+        <URL value="@fxml.css" />
+    </stylesheets>    
+</VBox>
