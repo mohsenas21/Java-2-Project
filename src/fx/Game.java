@@ -9,16 +9,16 @@ package fx;
 
 public class Game {
     
-    protected Team homeTeam;
-    protected Team awayTeam;
+    protected String homeTeam;
     protected int homeScore;
+    protected String awayTeam;
     protected int awayScore;
     protected String gameDate;
 
     public Game() {
     }
 
-    protected Game(Team homeTeam, Team awayTeam, int homeScore, int awayScore, String gameDate) {
+    protected Game(String homeTeam, int homeScore, String awayTeam, int awayScore, String gameDate) {
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -26,11 +26,11 @@ public class Game {
         this.gameDate = gameDate;
     }
 
-    public Team getHomeTeam() {
+    public String getHomeTeam() {
         return homeTeam;
     }
 
-    public Team getAwayTeam() {
+    public String getAwayTeam() {
         return awayTeam;
     }
 
@@ -46,11 +46,11 @@ public class Game {
         return gameDate;
     }
 
-    public void setHomeTeam(Team homeTeam) {
+    public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public void setAwayTeam(Team awayTeam) {
+    public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
     }
 

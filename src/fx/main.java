@@ -1,23 +1,24 @@
 package fx;
 
-import java.awt.Color;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +31,8 @@ public class main extends Application {
     Button btn;
     Stage window;
     Scene scene1, scene2;
+    TableView<Game> table;
+    TextField homeTeam,homeScore,awayTeam,awayScore,gameDate;
 
     public static void main(String[] args) {
 
@@ -87,20 +90,118 @@ public class main extends Application {
         btn2.setText("Back to the main page");
         btn2.setOnAction(e -> window.setScene(scene1));
         
-        Label welcome2 = new Label("Welcome to the NHL Stat System");
-        welcome2.setFont(Font.font("noteworthy", FontWeight.BOLD, 35));
+        //Label welcome2 = new Label("Welcome to the NHL Stat System");
+        //welcome2.setFont(Font.font("noteworthy", FontWeight.BOLD, 35));
         
+        //Home team Column
+        TableColumn<Game, String> homeT = new TableColumn<>("Home Team");
+        homeT.setMinWidth(100);
+        homeT.setCellValueFactory(new PropertyValueFactory<>("homeTeam"));
+        homeTeam = new TextField();
+        homeTeam.setPromptText("Home Team");
+        homeTeam.setMinWidth(60);
+       
+        
+        //Home team Score Column
+        TableColumn<Game, String> homeS = new TableColumn<>("Home Score");
+        homeS.setMinWidth(70);
+        homeS.setCellValueFactory(new PropertyValueFactory<>("homeScore"));    
+        homeScore = new TextField();
+        homeScore.setPromptText("Home Score");
+        homeScore.setMinWidth(30); 
+        
+        //Away team Column
+        TableColumn<Game, String> awayT = new TableColumn<>("Away Team");
+        awayT.setMinWidth(100);
+        awayT.setCellValueFactory(new PropertyValueFactory<>("awayTeam"));        
+        awayTeam = new TextField();
+        awayTeam.setPromptText("Away Team");
+        awayTeam.setMinWidth(60);
+        
+        //Away team Score Column
+        TableColumn<Game, String> awayS = new TableColumn<>("Away Score");
+        awayS.setMinWidth(70);
+        awayS.setCellValueFactory(new PropertyValueFactory<>("awayScore"));
+        awayScore = new TextField();
+        awayScore.setPromptText("Away Score");
+        awayScore.setMinWidth(30);
+        
+        //Date Column
+        TableColumn<Game, String> date = new TableColumn<>("Date");
+        date.setMinWidth(100);
+        date.setCellValueFactory(new PropertyValueFactory<>("gameDate"));
+        gameDate = new TextField();
+        gameDate.setPromptText("Game Date");
+        gameDate.setMinWidth(60);
+
+        // Add Button
+        Button add = new Button("Add");
+        add.setOnAction(e -> addMethod());
+        
+        // Delete Button
+        Button delete = new Button("Delete");
+        delete.setOnAction(e -> deleteMethod());
+        
+        // Back to main Page Button
+        Button main = new Button("Back");
+        main.setOnAction(e -> window.setScene(scene1));
+        
+        // The HBox for adding or deleting options
+        HBox hbox = new HBox();
+        hbox.setPadding(new Insets(10,10,10,10));
+        hbox.setSpacing(10);
+        hbox.getChildren().addAll(homeTeam,homeScore,awayTeam,awayScore,gameDate,add,delete,main);
+        
+        // Our Table
+        table = new TableView<>();
+        table.setItems(schedule());
+        table.getColumns().addAll(homeT,homeS,awayT,awayS,date);
 
         // Stackpane puts the button in the center
-        StackPane layout2 = new StackPane();
-        layout2.getChildren().add(btn2);
-        scene2 = new Scene(layout2, 600, 375);
+        VBox layout2 = new VBox();
+        layout2.getChildren().addAll(table,hbox);
+        scene2 = new Scene(layout2, 1070, 405);
         
         //displaying everything
-        window.setScene(scene1);
+        window.setScene(scene2);
         window.setTitle("NHL Stat System");
         window.show();
-
     }
+    
+    // Add Button Clicked
+    public void addMethod(){
+        Game game = new Game();
+        game.setHomeTeam(homeTeam.getText());
+        game.setHomeScore(Integer.parseInt(homeScore.getText()));
+        game.setAwayTeam(awayTeam.getText());
+        game.setAwayScore(Integer.parseInt(awayScore.getText()));
+        game.setGameDate(gameDate.getText());
+        
+        table.getItems().addAll(game);
 
+        homeTeam.clear();
+        homeScore.clear();
+        awayTeam.clear();
+        awayScore.clear();
+        gameDate.clear();
+    }
+    
+    // Delete Button Clicked
+    public void deleteMethod(){
+        ObservableList<Game> gameSelected, allGame;
+        allGame = table.getItems();
+        gameSelected = table.getSelectionModel().getSelectedItems();
+        
+        allGame.removeAll(gameSelected);
+    }
+    
+    // The Table
+    public ObservableList<Game> schedule(){
+        // we can import a file instead or just use it this way?
+        ObservableList<Game> Game = FXCollections.observableArrayList();
+        Game.add(new Game("homeTeam", 3, "AwayTeam", 4, "21.09.2026" ));
+        Game.add(new Game("homeTeam2", 4, "AwayTeam2", 2, "21.09.2026" ));
+        Game.add(new Game("homeTeam3", 6, "AwayTeam3", 1, "21.09.2026" ));
+        return Game;
+    }
 }
