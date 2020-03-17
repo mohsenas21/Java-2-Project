@@ -1,5 +1,6 @@
 package fx;
 
+import java.awt.Color;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -42,31 +43,32 @@ public class main extends Application {
         
         // added font
         Label welcome = new Label("Welcome to the NHL Stat System");
-        welcome.setFont(Font.font("noteworthy", FontWeight.BOLD, 35));
+        welcome.setFont(Font.loadFont("file:resources/fonts/Noteworthy-Lt.woff", 35));
 
         //First button
         Button loginBtn = new Button();
         loginBtn.setText("Submit");
-        loginBtn.setFont(Font.font("Gill Sans", FontWeight.NORMAL, 20));
+        loginBtn.setFont(Font.loadFont("file:resources/fonts/GillSansStd-Light.otf", 20));
         loginBtn.setOnAction(e -> window.setScene(scene2));//switch to scene2 where we can display the scores
 
         //HBox for logo and description
         HBox logoDesc = new HBox(25);
-        ImageView logo = new ImageView(new Image("images/nhl.png"));
+        ImageView logo = new ImageView(new Image("file:resources/images/nhl.png"));
         logo.setFitHeight(100);
         logo.setFitWidth(80);
         logoDesc.setAlignment(Pos.CENTER);
         Label description = new Label("Our app does blah blah _____");
-        description.setFont(Font.font("Avenir", FontWeight.NORMAL, 20));
+        description.setFont(Font.loadFont("file:resources/fonts/MADE Mirage Regular PERSONAL USE.otf", 20));
         logoDesc.getChildren().addAll(logo, description);
+        
         
         //instruction label
         Label login = new Label("Please login to be able to change the schedule!");
-        login.setFont(Font.font("Avenir", FontWeight.NORMAL, 20));
+        login.setFont(Font.loadFont("file:resources/fonts/Calibri Light.ttf", 27));
         
         //username text field
         TextField userName = new TextField("username");
-        userName.setFont(Font.font("Avenir", FontWeight.NORMAL, 14));
+        userName.setFont(Font.loadFont("file:resources/fonts/AvenirLTStd-Light.otf", 14));
         userName.setMaxWidth(200);
         
         //password text field
@@ -78,17 +80,22 @@ public class main extends Application {
         layout1.setAlignment(Pos.CENTER);
         layout1.getChildren().addAll(welcome, logoDesc,login, userName, password, loginBtn);
         scene1 = new Scene(layout1, 600, 375);
+        scene1.getStylesheets().add(getClass().getResource("fxml.css").toExternalForm());
 
         //Second button
         Button btn2 = new Button();
         btn2.setText("Back to the main page");
         btn2.setOnAction(e -> window.setScene(scene1));
+        
+        Label welcome2 = new Label("Welcome to the NHL Stat System");
+        welcome2.setFont(Font.font("noteworthy", FontWeight.BOLD, 35));
+        
 
         // Stackpane puts the button in the center
         StackPane layout2 = new StackPane();
         layout2.getChildren().add(btn2);
         scene2 = new Scene(layout2, 600, 375);
-
+        
         //displaying everything
         window.setScene(scene1);
         window.setTitle("NHL Stat System");
