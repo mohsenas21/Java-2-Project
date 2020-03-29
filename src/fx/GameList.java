@@ -17,8 +17,8 @@ public class GameList extends Game {
     public GameList() {
     }
 
-    public GameList(String homeTeam, int homeScore, String awayTeam, int awayScore, String gameDate) {
-        super(homeTeam, homeScore, awayTeam, awayScore, gameDate);
+    public GameList(String gameNumber, Team homeTeam, int homeScore, Team awayTeam, int awayScore, String gameDate) {
+        super(gameNumber, homeTeam, homeScore, awayTeam, awayScore, gameDate);
     }
     
     public void add(Game add){

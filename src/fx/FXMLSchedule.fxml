@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+
+<VBox spacing="10" alignment="center" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.ScheduleController">
+     <MenuBar id="menu">
+         <Menu text="_File"> 
+            <MenuItem text="_Open" onAction="#openFile"/>
+            <MenuItem text="_Save"/>
+            <SeparatorMenuItem />
+            <MenuItem text="E_xit"/>
+         </Menu>
+     </MenuBar>
+    <HBox spacing="5">
+        <Label text="Search:"/>
+        <TextField prefWidth="650" />
+<!--        <ImageView preserveRatio="true">
+            // nhl logo
+        </ImageView>-->
+    </HBox>
+    
+    <HBox alignment="center" spacing="25">
+        <VBox>
+            <Label styleClass="title" text="Schedule:" />
+            <TableView prefWidth="500" fx:id="schedule">
+                <columns>
+                    <TableColumn fx:id="gameNumCol" text="Game Number">
+                    </TableColumn>
+                    <TableColumn fx:id="homeTeamCol" text="Home Team">
+                    </TableColumn>
+                    <TableColumn fx:id="homeScoreCol" text="Home Score">
+                    </TableColumn>
+                    <TableColumn fx:id="awayTeamCol" text="Away Team">    
+                    </TableColumn>
+                    <TableColumn fx:id="awayScoreCol" text="Away Score">
+                    </TableColumn>
+                    <TableColumn fx:id="dateCol" text="Date">
+                    </TableColumn>
+               </columns>
+            </TableView> 
+        </VBox>
+        <VBox spacing="10" fx:id="selectedGame">
+            <GridPane vgap="5" hgap="5"> 
+                <children>
+                    <Label styleClass="title" text="Schedule:" 
+                           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="gameNumSelected" promptText="game number" editable="true" GridPane.columnIndex="0" GridPane.rowIndex="1" />      
+                    <Label text="Date" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="dateNumSelected" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <Label text="Home Team" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <ComboBox fx:id="homeTeamSelected" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <Label text="Home Score" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="homeScoreSelected" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <Label text="Away Team" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="awayTeamelected" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <Label text="Away Score" 
+                           GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <TextField fx:id="awayScoreSelected" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                </children>
+            </GridPane>
+            <Button text="Edit game" fx:id="add" />
+            <Button text="Delete game" fx:id="delete" />
+        </VBox>
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Add new game" fx:id="new" />  
+        <TextField fx:id="gameNum" promptText="game number" editable="true"/>      
+        <TextField fx:id="date" promptText="DD-MM-YY" editable="true"/>      
+        <ComboBox fx:id="homeTeam"/>
+        <TextField fx:id="homeScore" promptText="home score" />
+        <ComboBox fx:id="awayTeam" />
+        <TextField fx:id="awayScore" promptText="away score" />
+    </HBox>
+</VBox>

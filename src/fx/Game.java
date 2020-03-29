@@ -9,16 +9,18 @@ package fx;
 
 public class Game {
     
-    protected String homeTeam;
+    private String gameNumber;
+    protected Team homeTeam;
     protected int homeScore;
-    protected String awayTeam;
+    protected Team awayTeam;
     protected int awayScore;
     protected String gameDate;
 
     public Game() {
     }
 
-    protected Game(String homeTeam, int homeScore, String awayTeam, int awayScore, String gameDate) {
+    protected Game(String gameNumber, Team homeTeam, int homeScore, Team awayTeam, int awayScore, String gameDate) {
+        this.gameNumber = gameNumber;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeScore = homeScore;
@@ -26,11 +28,15 @@ public class Game {
         this.gameDate = gameDate;
     }
 
-    public String getHomeTeam() {
+    public String getGameNumber() {
+        return gameNumber;
+    }
+
+    public Team getHomeTeam() {
         return homeTeam;
     }
 
-    public String getAwayTeam() {
+    public Team getAwayTeam() {
         return awayTeam;
     }
 
@@ -46,11 +52,15 @@ public class Game {
         return gameDate;
     }
 
-    public void setHomeTeam(String homeTeam) {
+    public void setGameNumber(String gameNumber) {
+        this.gameNumber = gameNumber;
+    }
+    
+    public void setHomeTeam(Team homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public void setAwayTeam(String awayTeam) {
+    public void setAwayTeam(Team awayTeam) {
         this.awayTeam = awayTeam;
     }
 
@@ -68,10 +78,10 @@ public class Game {
 
     @Override
     public String toString() {
-        return "homeTeam = " + homeTeam + "\nawayTeam = " 
-                + awayTeam + "\nhomeScore = " + homeScore 
-                + "\nawayScore = " + awayScore + "\ngameDate = " 
-                + gameDate;
+        return "Game{" + "gameNumber=" + gameNumber + ", homeTeam=" + homeTeam 
+                + ", homeScore=" + homeScore + ", awayTeam=" + awayTeam 
+                + ", awayScore=" + awayScore + ", gameDate=" + gameDate + '}';
     }
+
     
 }

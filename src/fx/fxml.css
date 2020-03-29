@@ -23,6 +23,8 @@
         -fx-border-width: 1;
         -fx-margin-left: 10;
         -fx-margin-right: 10;
+        -fx-padding: 10 10 10 10;
+        -fx-alignment: center;
     }
     .root {
 /*       -fx-background-color: #383838;*/

@@ -7,34 +7,29 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="15" id="VBox" prefHeight="500.0" 
-      prefWidth="500.0" styleClass="mainFxmlClass"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.FXMLController">
+<VBox alignment="center" spacing="15" id="VBox" prefHeight="500.0" prefWidth="500.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fx.LoginController">
     <stylesheets>
         <URL value="@fxml.css" />
     </stylesheets>   
     <children>
         <Label id="welcome" text="Welcome to the NHL Stat System" />    
         <GridPane alignment="center" hgap="10">
-<!--                    <ImageView GridPane.columnIndex="0" wrapText="true" GridPane.rowIndex="0">
+<!--                <ImageView GridPane.columnIndex="0" wrapText="true" GridPane.rowIndex="0">
                         <image>
                             <Image url="images/nhl.jpg" />
                         </image>
                     </ImageView>-->
             <Label GridPane.columnIndex="0" wrapText="true" GridPane.rowIndex="0" text="NHL logo"/>
-            <Label GridPane.columnIndex="1" wrapText="true" GridPane.rowIndex="0" id="description" 
+            <Label id="description" GridPane.columnIndex="1" prefWidth="200" wrapText="true" GridPane.rowIndex="0"
                    text="Track your leagues games here. Add, edit, or delete games entered."/>
         </GridPane>
         <Label id="loginInstructions" 
-               text="Please login to be able to change the schedule!"> 
-<!--            <font>
-                <Font size="20">
-            </font>-->
-        </Label>
-            <TextField id="txtLogin" maxWidth ="150" text="username"/>
-            <PasswordField id="txtLogin" text="password" maxWidth ="150" />
+               text="Please login to be able to change the schedule!"/>
+        <TextField id="txtLogin" maxWidth ="150" text="username"/>
+        <PasswordField id="txtLogin" text="password" maxWidth ="150" />
         <Button id="btnSubmit" text="Submit" mnemonicParsing = "true" /> <!-- 
         e -> window.setScene(scene2));//switch to scene2 where we can display 
         the scores -->
     </children>
 </VBox>
+ 
